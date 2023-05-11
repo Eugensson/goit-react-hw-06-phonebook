@@ -16,9 +16,11 @@ const directory = [
 
 const ContactSlice = createSlice({
   name: 'contacts',
+
   initialState: {
     directory,
   },
+
   reducers: {
     addContact: (state, { payload }) => {
       state.directory.push(payload);
@@ -32,7 +34,7 @@ const ContactSlice = createSlice({
   },
 });
 
-export const persistedReducer = persistReducer(
+export const contactsReducer = persistReducer(
   persistConfig,
   ContactSlice.reducer
 );
