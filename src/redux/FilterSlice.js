@@ -8,9 +8,12 @@ export const Filter = createSlice({
   },
 
   reducers: {
-    filterSlice: (state, { payload }) => {
-      state.filter = payload;
+    filterSlice: {
+      reducer: (state, action) => {
+        state.filter = action.payload;
+      },
     },
+    prepare: payload => ({ payload }),
   },
 });
 

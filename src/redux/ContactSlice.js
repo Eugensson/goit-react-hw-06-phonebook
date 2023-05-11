@@ -22,14 +22,20 @@ const ContactSlice = createSlice({
   },
 
   reducers: {
-    addContact: (state, { payload }) => {
-      state.directory.push(payload);
+    addContact: {
+      reducer: (state, action) => {
+        state.directory.push(action.payload);
+      },
+      prepare: payload => ({ payload }),
     },
 
-    removeContact: (state, { payload }) => {
-      state.directory = state.directory.filter(
-        contact => contact.id !== payload
-      );
+    removeContact: {
+      reducer: (state, action) => {
+        state.directory = state.directory.filter(
+          contact => contact.id !== action.payload
+        );
+      },
+      prepare: payload => ({ payload }),
     },
   },
 });
